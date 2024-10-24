@@ -28,7 +28,52 @@ else:
 
 # INITIALISE MODELS
 embeddings_model = OpenAIEmbeddings(model=EMBEDDINGS_MODEL_NAME)
-llm=ChatOpenAI(temperature=0, model=OPENAI_MODEL_NAME)
+#llm=ChatOpenAI(temperature=0, model=OPENAI_MODEL_NAME)
+
+class LLM:
+    def __init__(self, model, api_key, base_url, default_headers=None, 
+                 custom_llm_provider=None, deployment_id=None):
+        self.model = model
+        self.api_key = api_key
+        self.base_url = base_url
+        self.default_headers = default_headers or {}
+        self.custom_llm_provider = custom_llm_provider
+        self.deployment_id = deployment_id
+
+    def _construct_url(self):
+        """Constructs the API endpoint URL."""
+        if self.custom_llm_provider in ["azure", "azure openai"]:
+            return f"{self.base_url}/openai/deployments/{self.deployment_id}/completions?api-version=2024-10-01"
+        return f"{self.base_url}/v1/completions"
+
+    def generate_response(self, prompt, temperature=0.7, max_tokens=100):
+        """Sends a request to the LLM API."""
+        url = self._construct_url()
+        headers = {**self.default_headers, "Authorization": f"Bearer {self.api_key}"}
+        payload = {
+            "model": self.model,
+            "prompt": prompt,
+            "temperature": temperature,
+            "max_tokens": max_tokens,
+        }
+
+        response = requests.post(url, json=payload, headers=headers)
+        if response.status_code == 200:
+            return response.json().get("choices", [{}])[0].get("text", "")
+        else:
+            raise Exception(f"Error {response.status_code}: {response.text}")
+
+llm = LLM(
+    model="gpt-4o-mini",  
+    api_key=OPENAI_KEY,
+    base_url=OPENAI_API_BASE,
+    default_headers={
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/81.0"
+    },
+    custom_llm_provider="azure openai",
+    deployment_id=OPENAI_MODEL_NAME 
+)
+
 
 class RetrieverVectorDB:
     def __init__(self):
