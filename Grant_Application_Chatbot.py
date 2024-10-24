@@ -21,7 +21,7 @@ form.subheader("""I am a chatbot designed to help you with your queries on apply
 
 st.markdown(
     """
-    Uses cases for chatbot includes: application support and guidance, grant eligibility and requirements check, Assess FAQ for request for proposal clarification""")
+    Uses cases for chatbot includes: application support and guidance, grant eligibility and requirements check, request for proposal clarification""")
 
 user_prompt = form.text_area("Enter your prompt here:", height=200)
 
