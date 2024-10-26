@@ -43,7 +43,11 @@ if form.form_submit_button("Submit"):
     else:
         st.warning("Please enter a prompt before submitting.")
 
-
+with st.expander("IMPORTANT NOTICE ❗❗❗:"):
+    st.write('''This web application is developed as a proof-of-concept prototype. The information provided here is NOT intended for actual usage and should not be relied upon for making any decisions, especially those related to financial, legal, or healthcare matters.
+Furthermore, please be aware that the LLM may generate inaccurate or incorrect information. You assume full responsibility for how you use any generated output.
+Always consult with qualified professionals for accurate and personalised advice. ''')
+    
 # Add top padding
 st.markdown(
     """
@@ -57,12 +61,6 @@ st.markdown(
 )
 # Apply the padding by creating an empty div
 st.markdown("<div class='top-padding'></div>", unsafe_allow_html=True)
-
-
-with st.expander("IMPORTANT NOTICE ❗❗❗:"):
-    st.write('''This web application is developed as a proof-of-concept prototype. The information provided here is NOT intended for actual usage and should not be relied upon for making any decisions, especially those related to financial, legal, or healthcare matters.
-Furthermore, please be aware that the LLM may generate inaccurate or incorrect information. You assume full responsibility for how you use any generated output.
-Always consult with qualified professionals for accurate and personalised advice. ''')
 
 # Create three columns: left, center, right
 col1, col2, col3 = st.columns([3, 2, 2])
