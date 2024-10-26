@@ -24,7 +24,7 @@ else:
    OPENAI_KEY = st.secrets['OPENAI_API_KEY']
    OPENAI_MODEL_NAME = st.secrets['OPENAI_MODEL_NAME']
    EMBEDDINGS_MODEL_NAME = st.secrets['EMBEDDINGS_MODEL_NAME']
-   OPENAI_API_BASE = st.secrets['OPENAI_API_BASE']
+#    OPENAI_API_BASE = st.secrets['OPENAI_API_BASE']
 
 # INITIALISE MODELS
 embeddings_model = OpenAIEmbeddings(model=EMBEDDINGS_MODEL_NAME)
