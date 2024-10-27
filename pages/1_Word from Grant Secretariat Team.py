@@ -9,10 +9,10 @@ st.write("# Hi there Grant Applicant! 👋")
 
 st.markdown(
     """
-    Understand that grant applications can be a very complex situation.
-    With this app we would wish to empower applicant to self help, supporting your need in this journey 24/7.
-    Looking forward to reading the amazing proposal to help solve our nation's issue.
-
+    Understand applying for grant can be complex and challenging.
+    With this app, we aim to empower applicants to navigate the application process independently, providing 24/7 support.
+    We look forward to read incredible proposals you submit to help address our nation’s challenges.
+    
     1. Please contact us through CTRL_Grant_Secretariat@nea.gov.sg  if you are unable to get the answer your are looking for. 
     2. Please contact Helpdesk@researchgrant.gov.sg if you require assistance with IGMS. Alternatively, refer to the training manual through https://www.researchgrant.gov.sg/Pages/TrainingGuides.aspx
     """)
@@ -40,17 +40,17 @@ st.markdown(
     Brought to you by the CTRL Grant Secretariat Team.
     """)
 
-# Add top padding
-st.markdown(
-    """
-    <style>
-    .top-padding {
-        padding-top: 100px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+# # Add top padding
+# st.markdown(
+#     """
+#     <style>
+#     .top-padding {
+#         padding-top: 100px;
+#     }
+#     </style>
+#     """,
+#     unsafe_allow_html=True
+# )
 # Apply the padding by creating an empty div
 st.markdown("<div class='top-padding'></div>", unsafe_allow_html=True)
 

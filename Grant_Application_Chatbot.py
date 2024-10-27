@@ -1,6 +1,6 @@
-__import__('pysqlite3')
-import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+# __import__('pysqlite3')
+# import sys
+# sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 import streamlit as st
 from dotenv import load_dotenv
@@ -25,7 +25,7 @@ form.subheader("""I am a chatbot designed to help you with your queries on apply
 
 st.markdown(
     """
-    Uses cases for chatbot includes: application support and guidance, grant eligibility and requirements check, request for proposal clarification""")
+    Use cases for chatbot include: application support and guidance, grant eligibility and requirements check, request for proposal clarification""")
 
 user_prompt = form.text_area("Enter your prompt here:", height=200)
 
@@ -36,10 +36,10 @@ if form.form_submit_button("Submit"):
 
         with st.spinner('Loading....'):
             response = crew.kickoff(inputs={"query": user_prompt})
-		
-        st.write("#####")
-        st.text_area(label="Chatbot output:", value=response.raw, height=400)
-        
+        st.write(response)
+#        st.write("#####")
+#        st.text_area(label="Chatbot output:", value=response.raw, height=400)
+#        st.text_area(label="Chatbot output:", value=response.json_dict, height=400)        
     else:
         st.warning("Please enter a prompt before submitting.")
 
