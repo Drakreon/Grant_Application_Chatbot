@@ -32,7 +32,7 @@ with st.expander("Want to learn more?"):
 
 with st.expander("Will there be hallucination?"):
     st.write('''
-        Even through we tried our best to test and coded in safe guards, there is still a low likelihood for hallucination. Please refer to the source document(s) referenced to counter check chatbot responses.
+        Even through we tried our best to test and coded in safe guards, there is still a low likelihood for hallucination.
     ''')
 
 st.markdown(

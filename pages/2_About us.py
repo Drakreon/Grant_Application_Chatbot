@@ -9,7 +9,7 @@ st.write("# About Us 👋")
 
 st.markdown(
     """
-    Welcome to our innovative project aimed at supporting grant applicants through an AI-powered chatbot. We are a dedicated team of three musketeers 🏇 behind the scenes, ready to assist with any queries regarding grant applications.
+    Welcome to our innovative project aimed at supporting grant applicants through an AI-powered chatbot. We are a dynamic duo committed to delivering excellence ☯ behind the scenes, ready to assist with any queries regarding grant applications.
 
 ✨Our mission: :blue-background[**streamline the grant application process and enhance the applicant experience.**] ✨ 
 """)
@@ -23,27 +23,34 @@ The chatbot will learn, adapt, and improve over time, ensuring every interaction
 
 with st.expander("📋 Project Scope"):
     st.write('''
-        Project focuses on building a custom chatbot using Agentic Retrieval-Augmented Generation (RAG) technology to answer a variety of questions about grant calls and application processes. Here’s a breakdown of the key development areas:
+        Project focuses on building a custom chatbot using Retrieval-Augmented Generation (RAG) technology with Crew AI Agents to answer a variety of questions about grant calls and application processes. Here’s a breakdown of the key development areas:
 
-        📑 **Step 1: Data Extraction and Forming of Vector Database from Grant Call Documents**:             
-            - Extracting and combining text from grant call documents   
-            - Text splitting and conversion to Vector Database
-            
-            
-        ⚙️ **Step 2: Evaluation and Selection of LLM **:           
-            - Fine-tuning parameters of vector database such as chunk size to improve accuracy and efficiency           
-            - Using RAGAS to select between (a) Recursive chunking + naive retrival , (b) Semantic chunking and (c) Recursive chunking + Parent-child + Naive retirval   
-            -  <ADD ASSESSMENT>
+        📑 **Step 1: Data Extraction and Forming of Vector Database from Grant Call Documents**:
                           
-        🔐 **Step 3: LLM Safety and Accuracy Assurance**:           
-            - Integrating Crew AI for safe and reliable information retrieval using 4 Crew (query_filter_agent, query_rephraser_agent, query_retriever_agent, response_generator_agent)           
-            - Features prevents malicious content generation, ensure information accuracy and format it to goverment style responses
+        - Extracting and combining text from grant call documents   
+        - Text splitting and conversion to Vector Database
+            
+            
+        ⚙️ **Step 2: Evaluation and Selection of LLM**:
+                          
+        - Fine-tuning parameters of vector database such as chunk size to improve accuracy and efficiency           
+        - Using RAGAS to select the best retrieval combination (refer to more details in assessment section)
+                          
+        🔐 **Step 3: LLM Safety and Accuracy Assurance**:
+                          
+        - Integrating Crew AI agents for safe and reliable information retrieval. The four Crew AI are   
+            (a) **Query filter** - Differentiate malicious query from query related to grant applicaiton   
+            (b) **Query Rephraser** - Assess of the query is clear and provide edits ONLY when needed   
+            (c) **Query Retriever** - Retrieve the data from the vector database   
+            (d) **Response Generator** - Generate civil servant format of response based on reference provided
+                          
+        Prevent malicious content generation, ensure information accuracy and generate responses are replied in civil servant tone
              
-        🛠️ **Step 4: Quality Assurance and Testing**:           
-            - Testing chatbot responses across various query types           
-            - Validating performance on complex and nuanced questions           
-            - Enhancing relevance by incorporating historical FAQs           
-            - <ADD ASSESSMENT>
+        🛠️ **Step 4: Quality Assurance and Testing**:
+                          
+        - Testing chatbot responses across various query types           
+        - Validating performance on complex and nuanced questions (refer to more details in assessment section)          
+        - Enhancing relevance by incorporating historical FAQs           
     ''')
 
 with st.expander("🎯 Objectives"):
@@ -57,13 +64,23 @@ with st.expander("🎯 Objectives"):
 
 with st.expander("📊 Data Sources"):
     st.write('''
-    For this Proof of Concept (POC), we are using data from a recent close plastic grant call earlier this year.
+    For this Proof of Concept (POC), we are using data from a recently closed plastic grant call.
 
     **Key Data Sources:**
-    - 📄Grant-specific documents: Consist of 12 documents covering the application process, eligibility criteria, proposal template, and evaluation matrix 
-    - ❓Frequently Asked Questions (FAQs): (a) Used to evaluated the chatbot through RAGAS and (b) incoperated into the final chatbot to improve response quality
-
+    - 📄**Grant-specific documents**: Consist of 12 documents covering the grant call topics, application process, eligibility criteria, proposal template, and evaluation matrix, etc.
+    - ❓**Frequently Asked Questions (FAQs)**: This is a document where we compiled the questions that were asked and answers provided. It was used during the evaluation of the chatbot to select the retrieval method (during RAGAS ).
+    The document would be eventually incorporated into the chatbot at our final step as a data source to improve response quality
+             
     In a production environment, we have tested codes which can scrape NEA Grant call webpages for real-time updates of documents. For now, the POC uses locally stored grant documents to ensure reliable processing.''')
+
+with st.expander("🔍 Evaluation of LLM"):
+    st.write('''
+    **Evaluation of Retrival Combination**
+        XXXXXX
+    **Human Evaluation of Output from Chatbot**
+        XXXXX
+''')
+
 
 st.markdown(
     """ 
