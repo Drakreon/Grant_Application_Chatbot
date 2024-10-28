@@ -74,24 +74,24 @@ folder_path = r"C:/Users/Sin Kuan Tan/OneDrive/Coding/Streamlit/Grant_Applicatio
 documents = os.listdir(folder_path)
 all_documents_content = []
 
-def read_word_doc(file_path):
-    doc = Document(file_path)
+# def read_word_doc(file_path):
+#     doc = Document(file_path)
 
-    # Extract paragraphs text
-    doc_text = "\n".join([para.text for para in doc.paragraphs])
+#     # Extract paragraphs text
+#     doc_text = "\n".join([para.text for para in doc.paragraphs])
 
-    # Extract table data
-    table_data = []
-    for table in doc.tables:
-        for row in table.rows:
-            row_data = [cell.text.strip() for cell in row.cells]
-            table_data.append(row_data)
+#     # Extract table data
+#     table_data = []
+#     for table in doc.tables:
+#         for row in table.rows:
+#             row_data = [cell.text.strip() for cell in row.cells]
+#             table_data.append(row_data)
 
-    return doc_text, table_data
+#     return doc_text, table_data
 
-def read_csv_file(file_path):
-    df = pd.read_csv(file_path)
-    return None, df.to_string()  
+# def read_csv_file(file_path):
+#     df = pd.read_csv(file_path)
+#     return None, df.to_string()  
 
 # Function to read a PDF file (text + attempt to extract tables)
 def read_pdf_file(file_path):
@@ -112,26 +112,26 @@ for doc in documents:
     file_path = os.path.join(folder_path, doc)
 
     if doc.endswith('.docx'):
-        # Read Word file (text and tables)
-        content_text, table_content = read_word_doc(file_path)
-        # Combine text and table content
-        combined_content = content_text
-        if table_content:
-            combined_content += "\n\n" + "\n".join([str(row) for row in table_content])
+        # # Read Word file (text and tables)
+        # content_text, table_content = read_word_doc(file_path)
+        # # Combine text and table content
+        # combined_content = content_text
+        # if table_content:
+    #     #     combined_content += "\n\n" + "\n".join([str(row) for row in table_content])
 
-        # Create a LangChain Document object
-        document_obj = LangchainDocument(page_content=combined_content, metadata={"filename": doc})
-        all_documents_content.append(document_obj)
+    #     # Create a LangChain Document object
+    #     document_obj = LangchainDocument(page_content=combined_content, metadata={"filename": doc})
+    #     all_documents_content.append(document_obj)
 
-    elif doc.endswith('.csv'):
-        # Read CSV file (as table)
-        content_text, table_content = read_csv_file(file_path)
-        # Combine text and table content (CSV doesn't have text content)
-        combined_content = table_content
+    # elif doc.endswith('.csv'):
+    #     # Read CSV file (as table)
+    #     content_text, table_content = read_csv_file(file_path)
+    #     # Combine text and table content (CSV doesn't have text content)
+    #     combined_content = table_content
 
-        # Create a LangChain Document object
-        document_obj = LangchainDocument(page_content=combined_content, metadata={"filename": doc})
-        all_documents_content.append(document_obj)
+    #     # Create a LangChain Document object
+    #     document_obj = LangchainDocument(page_content=combined_content, metadata={"filename": doc})
+    #     all_documents_content.append(document_obj)
 
     elif doc.endswith('.pdf'):
         # Read PDF file (text and attempt to get tables)

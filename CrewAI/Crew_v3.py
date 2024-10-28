@@ -66,7 +66,7 @@ class RetrieverVectorDB:
 
         self.qa_chain = RetrievalQA.from_chain_type(
             llm=llm,
-            retriever=self.vectordb.as_retriever(k=30)
+            retriever=self.vectordb.as_retriever(search_type="mmr", search_kwargs={"k": 10, "fetch_k": 30})
         )
     
     @staticmethod
@@ -166,7 +166,7 @@ query_rephrase_task = Task(
 query_retriver_task = Task(
     description="""\
     Step 1: If output from query_rephraser_agent is [I don't know], provide output as [I don't know].
-    Step 2: Otherwise, use output from query_rephrase_agent to search for relevant information using RetrieveVectorDBTool
+    Step 2: Otherwise, use output from query_rephrase_agent to search for relevant information using Tool
     """,
 
     expected_output="""\

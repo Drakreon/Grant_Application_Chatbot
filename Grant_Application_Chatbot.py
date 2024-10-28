@@ -38,7 +38,7 @@ if form.form_submit_button("Submit"):
             response = crew.kickoff(inputs={"query": user_prompt})
         st.write("#####")
         st.text_area(label="Chatbot output:", value=response.raw, height=400)
-        st.text_area(label="Chatbot output:", value=response.json_dict, height=400)        
+   
     else:
         st.warning("Please enter a prompt before submitting.")
 
