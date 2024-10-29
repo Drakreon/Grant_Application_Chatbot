@@ -93,9 +93,8 @@ with st.expander("🔍 Evaluation of LLM"):
     By choosing the Recursive + Naïve retrieval method, we prioritise the reduction of hallucinations whilst maintaining strong performance in relevancy and overall accuracy. This approach aligns with our goal of providing reliable and pertinent information to users.                          
              ''')
     st.image(
-    "https://raw.githubusercontent.com/Drakreon/Grant_Application_Chatbot/blob/main/Image/RAGAS%20evaluation.png",
-    width=650
-)
+    "https://raw.githubusercontent.com/Drakreon/Grant_Application_Chatbot/main/Image/RAGAS%20evaluation.png",
+    width=650)
 
 
     st.write('''
