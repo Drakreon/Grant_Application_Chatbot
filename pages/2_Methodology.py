@@ -13,4 +13,7 @@ st.markdown(
     documents. To ensure safety and reliability, Crew AI agents are integrated for query filtering, rephrasing, data retrieval, and response generation.
     """)
 
-st.image("Image\Flowchart for AIbootcamp.drawio.png")
+# st.image("Image\Flowchart for AIbootcamp.drawio.png")
+st.image(
+    "https://raw.githubusercontent.com/Drakreon/Grant_Application_Chatbot/main/Image/Flowchart%20for%20AIbootcamp.drawio.png"
+)
