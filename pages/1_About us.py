@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="🎉 About Us",
+    page_title="About Us",
     page_icon="👋",
 )
 
@@ -76,11 +76,29 @@ with st.expander("📊 Data Sources"):
 with st.expander("🔍 Evaluation of LLM"):
     st.write('''
     **Evaluation of Retrival Combination**
-        XXXXXX
-    **Human Evaluation of Output from Chatbot**
-        XXXXX
-''')
+             
+    We have evaluated three splitting and chunking methods using RAGAS metrics based on five past queries and answers:
+    - Recursive + Naïve retrieval
+    - Semantic + Naïve retrieval
+    - Recursive + Parent and Child + Naïve retrieval
+             
+    While the Semantic + Naïve retrieval method provided the highest overall scores, particularly in Answer Relevancy (0.941627) and Answer Correctness (0.469876), we observed that it produced the most hallucinations in the answers. This is a critical concern, as hallucinations can lead to misinformation and reduce the reliability of the system.
+    
+    As such, we have opted for the Recursive + Naïve retrieval method. This approach offers the second-highest Answer Relevancy score (0.7376204) while maintaining a balance between performance and accuracy.
+    
+    [Selection] Recursive + Naïve retrieval combination
+    - Reduced hallucinations: Compared to the Semantic method, the Recursive approach appears to generate fewer hallucinations, which is crucial for maintaining answer integrity.
+    - Balanced approach : While not scoring the highest, it still provides good results across all metrics
+    
+    By choosing the Recursive + Naïve retrieval method, we prioritise the reduction of hallucinations whilst maintaining strong performance in relevancy and overall accuracy. This approach aligns with our goal of providing reliable and pertinent information to users.                          
+             ''')
+    st.image("Image\RAGAS evaluation.png", width=650)
 
+
+    st.write('''
+        **Human Evaluation of Output from Chatbot**
+            XXXXX
+    ''')
 
 st.markdown(
     """ 

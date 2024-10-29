@@ -146,7 +146,7 @@ for doc in documents:
         all_documents_content.append(document_obj)
 
 ### NAIVE DB ####
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=40, length_function=count_tokens)
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200, length_function=count_tokens)
 splitted_documents = text_splitter.split_documents(all_documents_content)
 vectordb = Chroma.from_documents(documents=splitted_documents,embedding=embeddings_model,collection_name="naive_splitter", persist_directory="./vector_db")
 
