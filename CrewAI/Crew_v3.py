@@ -66,6 +66,7 @@ class RetrieverVectorDB:
 
         self.qa_chain = RetrievalQA.from_chain_type(
             llm=llm,
+#            retriever=self.vectordb.as_retriever(search_type="mmr", search_kwargs={"k": 10, "fetch_k": 30})
             retriever=self.vectordb.as_retriever(search_type="mmr", search_kwargs={"k": 10, "fetch_k": 30})
         )
     
@@ -75,14 +76,39 @@ class RetrieverVectorDB:
         cleaned_str = re.sub(r"[^a-zA-Z0-9\s\?]", "", input_str)
         return cleaned_str.strip()
 
+    def fallback_retrieval(self, query: str) -> str:
+        """Fallback strategy with broader search."""
+        print("Fallback retrieval initiated...")
+        broader_retriever = self.vectordb.as_retriever(
+            search_type="similarity", search_kwargs={"k": 15}
+        )
+        fallback_chain = RetrievalQA.from_chain_type(llm=llm, retriever=broader_retriever)
+        response = fallback_chain.invoke(query)
+        return response['result']
+
     def data(self, query: str) -> str:
         """Search vector_db using the QA chain."""
         clean_prompt = self.sanitize_input(query)
         try:
             response = self.qa_chain.invoke(clean_prompt)
+ #######           
+            if response['result'].strip() == "" or response['result'].lower() == "i don't know":
+                raise ValueError("Empty or unknown response, triggering fallback.")
             return response['result']
         except Exception as e:
-            return f"Error during retrieval: {str(e)}"
+            print(f"Primary retrieval failed: {str(e)}")
+            # Fallback retrieval if the primary search fails
+            try:
+                return self.fallback_retrieval(clean_prompt)
+            except Exception as fallback_error:
+                return f"Error during fallback retrieval: {str(fallback_error)}"            
+########            
+        
+            
+            
+        #     return response['result']
+        # except Exception as e:
+        #     return f"Error during retrieval: {str(e)}"
 
 # TOOLS
 # Set up the RetrieveVectorDBTool using the class above.
@@ -178,7 +204,7 @@ query_retriver_task = Task(
     
 response_generation_task = Task(
     description="""\
-    Step1: If query_retriever_output == [I don't know]. Output is "Apologies, there are no relevant information. Please refer to page 'Word from Grant Secretariat Team' for contact details." 
+    Step1: If query_retriever_output is only "I don't know" without other information. Output is "Apologies, there are no relevant information. Please refer to page 'Word from Grant Secretariat Team' for contact details." 
     Step 2: Else, for all other output, you will consume ONLY the output from query_retriever_agent to formulate your output to query. Do NOT add in additional information 
     Step 3: You are a goverment civil servant and will phrase the output in a professional yet helpful tone, in british english. Before replying, take a deep breath and work on this problem step by step.""",
 
