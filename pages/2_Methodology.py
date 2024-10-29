@@ -17,3 +17,16 @@ st.markdown(
 st.image(
     "https://raw.githubusercontent.com/Drakreon/Grant_Application_Chatbot/main/Image/Flowchart%20for%20AIbootcamp.drawio.png"
 )
+
+st.markdown(
+    """ 
+    Brought to you by the CTRL Grant Secretariat Team.
+    """)
+
+st.markdown("<div class='top-padding'></div>", unsafe_allow_html=True)
+
+# Create three columns: left, center, right
+col1, col2, col3 = st.columns([3, 2, 2])
+# Insert the image in the rightmost column
+with col2:
+    st.image("https://www.nea.gov.sg/images/default-source/about-us/nea-logo.png", width=400)
