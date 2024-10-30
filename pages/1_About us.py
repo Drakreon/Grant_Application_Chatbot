@@ -96,9 +96,18 @@ with st.expander("🔍 Evaluation of LLM"):
 
     st.write('''
     :red-background[**Evaluation 2: Human Evaluation of Output from Chatbot**]
-    
-    XXXXX
+    The refined evaluation process for crew agent outputs involves selecting a diverse set of historical questions categorised by difficulty:
+    easy, moderate, difficult and queries that are not present in the database. The queries were run through the chatbot three times to assess consistency.
+    The generated answers are then compared to pre-existing 'gold standard' answers. Understanding this evaluation process will help us refine our data and
+    improve our methodologies for future developments.
+             
+    The results shows that the model faced some challenges especially in answering the harder queries with accuracy dropping to 50%. However it
+    managed to provide decent control of hallucination and intepretation of data extracted.
     ''')
+
+        st.image(
+    "https://raw.githubusercontent.com/Drakreon/Grant_Application_Chatbot/main/Image/Manual%evaluation.png",
+    width=650)
 
 st.markdown(
     """ 
