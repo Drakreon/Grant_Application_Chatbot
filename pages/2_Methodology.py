@@ -19,9 +19,8 @@ retriever agent to search the vector database for relevant information. The resp
 the rephrased query or the retrieved data, which is ultimately presented to the user.
 
 The **right flowchart** provides an overview of the backend processes 💾, including embedded model operations and data retrieval.
-It outlines how data, such as information from previous grant calls, is scraped, processed, and stored as vector
-representations in the database. When a query is received, Crew AI agent retrieve matching vectors and forward them
-to the response generator, which, as shown in the left flowchart, produces the final output.
+It outlines how data is scraped, processed, and stored as vector representations in the database. When a processed query is received, the query retriever
+ Crew AI agent retrieve matching vectors and forward them to the response generator, which, as shown in the left flowchart, produces the final output.
 """)
 
 # st.image("Image\Flowchart for AIbootcamp.drawio.png")

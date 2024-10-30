@@ -34,21 +34,22 @@ with st.expander("📋 Project Scope"):
         ⚙️ **Step 2: Evaluation and Selection of LLM**:
                           
         - Fine-tuning parameters of vector database such as chunk size to improve accuracy and efficiency           
-        - Using RAGAS to select the best retrieval combination (refer to more details in assessment section)
+        - Using RAGAS to select the best retrieval combination (refer to more details in "Evaluation of Retrieval Method and Chatbot" section)
                           
         🔐 **Step 3: LLM Safety and Accuracy Assurance**:
                           
+        - Prevent malicious content generation, ensure information accuracy and generate responses are replied in civil servant tone
         - Integrating Crew AI agents for safe and reliable information retrieval. The four Crew AI are   
             (a) **Query filter** - Differentiate malicious query from query related to grant applicaiton   
             (b) **Query Rephraser** - Assess of the query is clear and provide edits ONLY when needed   
             (c) **Query Retriever** - Retrieve the data from the vector database   
             (d) **Response Generator** - Generate civil servant format of response based on reference provided           
-        - Prevent malicious content generation, ensure information accuracy and generate responses are replied in civil servant tone
+        
              
         🛠️ **Step 4: Quality Assurance and Testing**:
                           
         - Testing chatbot responses across various query types           
-        - Validating performance on complex and nuanced questions (refer to more details in assessment section)          
+        - Validating performance on complex and nuanced questions (refer to more details in "Evaluation of Retrieval Method and Chatbot" section)          
         - Enhancing relevance by incorporating historical FAQs           
     ''')
 
@@ -67,12 +68,24 @@ with st.expander("📊 Data Sources"):
 
     **Key Data Sources:**
     - 📄**Grant-specific documents**: Consist of 12 documents covering the grant call topics, application process, eligibility criteria, proposal template, and evaluation matrix, etc.
+    - Request For Proposal Plastic Waste Recycling And Packaging Solutions
+        - Instructions and Templates for Applicants_CTRL-plastic waste
+        - Research Proposal Template
+        - CV template
+        - Annex A Potentially Useful Datasets from USS
+        - Annex B Guidelines for the Management of Research Grants
+        -Annex C.1 Terms and Conditions
+        -Annex C.2 Addendum to Terms and Conditions
+        - Annex D Guidelines on Funding Private Sector Entities
+        - Annex E Declaration Form For Private Sector Applicant(s)
+        - Annex F IGMS Account Creation
+        - Annex G Check-List Of Documents To Prepare
     - ❓**Frequently Asked Questions (FAQs)**: This is a document where we compiled the questions that were asked and answers provided. It was used during the evaluation of the chatbot to select the retrieval method (during RAGAS ).
     The document would be eventually incorporated into the chatbot at our final step as a data source to improve response quality
              
     In a production environment, we have tested codes which can scrape NEA Grant call webpages for real-time updates of documents. For now, the POC uses locally stored grant documents to ensure reliable processing.''')
 
-with st.expander("🔍 Evaluation of LLM"):
+with st.expander("🔍 Evaluation of Retrieval Method and Chatbot"):
     st.write('''
     :red-background[**Evaluation 1: Evaluation of splitting and chunking methods**]
              
@@ -90,12 +103,11 @@ with st.expander("🔍 Evaluation of LLM"):
     This chosen combination aligns with our goal of providng accurate and reliable information by balancing performance in relevancy with minimal hallucination risk.                   
     ''')
     st.image(
-    "https://raw.githubusercontent.com/Drakreon/Grant_Application_Chatbot/main/Image/RAGAS%20evaluation.png",
-    width=650)
+    "https://raw.githubusercontent.com/Drakreon/Grant_Application_Chatbot/main/Image/RAGAS%20evaluation.png")
 
 
     st.write('''
-    :red-background[**Evaluation 2: Human Evaluation of Output from Chatbot**]
+    :red-background[**Evaluation 2: Manual Evaluation of Output from Chatbot**]
              
     The refined evaluation process for crew agent outputs involves selecting a diverse set of historical questions categorised by difficulty:
     easy, moderate, difficult and queries that are not present in the database. The queries were run through the chatbot three times to assess consistency.
@@ -107,8 +119,9 @@ with st.expander("🔍 Evaluation of LLM"):
     ''')
 
     st.image(
-    "https://raw.githubusercontent.com/Drakreon/Grant_Application_Chatbot/main/Image/Manual%20evaluation.png",
-    width=650)
+    "https://raw.githubusercontent.com/Drakreon/Grant_Application_Chatbot/main/Image/Manual%20evaluation.png")
+    st.image(
+    "https://raw.githubusercontent.com/Drakreon/Grant_Application_Chatbot/main/Image/Manual%20evaluation%20detailed.png")
 
 st.markdown(
     """ 
