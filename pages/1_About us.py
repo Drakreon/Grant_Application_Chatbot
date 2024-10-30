@@ -105,8 +105,8 @@ with st.expander("🔍 Evaluation of LLM"):
     managed to provide decent control of hallucination and intepretation of data extracted.
     ''')
 
-        st.image(
-    "https://raw.githubusercontent.com/Drakreon/Grant_Application_Chatbot/main/Image/Manual%evaluation.png",
+    st.image(
+    "https://github.com/Drakreon/Grant_Application_Chatbot/blob/main/Image/Manual%20evaluation.png",
     width=650)
 
 st.markdown(
