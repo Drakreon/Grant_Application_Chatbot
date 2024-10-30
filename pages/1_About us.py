@@ -106,7 +106,7 @@ with st.expander("🔍 Evaluation of LLM"):
     ''')
 
     st.image(
-    "https://github.com/Drakreon/Grant_Application_Chatbot/blob/main/Image/Manual%20evaluation.png",
+    "https://raw.githubusercontent.com/Drakreon/Grant_Application_Chatbot/blob/main/Image/Manual%20evaluation.png",
     width=650)
 
 st.markdown(
