@@ -39,4 +39,4 @@ st.markdown("<div class='top-padding'></div>", unsafe_allow_html=True)
 col1, col2, col3 = st.columns([3, 2, 2])
 # Insert the image in the rightmost column
 with col2:
-    st.image("https://www.nea.gov.sg/images/default-source/about-us/nea-logo.png", width=400)
+    st.image("https://www.nea.gov.sg/images/default-source/about-us/nea-logo.png")

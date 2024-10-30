@@ -68,14 +68,14 @@ with st.expander("📊 Data Sources"):
 
     **Key Data Sources:**
     - 📄**Grant-specific documents**: Consist of 12 documents covering the grant call topics, application process, eligibility criteria, proposal template, and evaluation matrix, etc.
-    - Request For Proposal Plastic Waste Recycling And Packaging Solutions
+        - Request For Proposal Plastic Waste Recycling And Packaging Solutions
         - Instructions and Templates for Applicants_CTRL-plastic waste
         - Research Proposal Template
         - CV template
         - Annex A Potentially Useful Datasets from USS
         - Annex B Guidelines for the Management of Research Grants
-        -Annex C.1 Terms and Conditions
-        -Annex C.2 Addendum to Terms and Conditions
+        - Annex C.1 Terms and Conditions
+        - Annex C.2 Addendum to Terms and Conditions
         - Annex D Guidelines on Funding Private Sector Entities
         - Annex E Declaration Form For Private Sector Applicant(s)
         - Annex F IGMS Account Creation
@@ -120,6 +120,10 @@ with st.expander("🔍 Evaluation of Retrieval Method and Chatbot"):
 
     st.image(
     "https://raw.githubusercontent.com/Drakreon/Grant_Application_Chatbot/main/Image/Manual%20evaluation.png")
+    st.write('''
+    Detailed heatmap of the responses are shown below:
+    ''')
+    
     st.image(
     "https://raw.githubusercontent.com/Drakreon/Grant_Application_Chatbot/main/Image/Manual%20evaluation%20detailed.png")
 
@@ -146,4 +150,4 @@ st.markdown("<div class='top-padding'></div>", unsafe_allow_html=True)
 col1, col2, col3 = st.columns([3, 2, 2])
 # Insert the image in the rightmost column
 with col2:
-    st.image("https://www.nea.gov.sg/images/default-source/about-us/nea-logo.png", width=400)
+    st.image("https://www.nea.gov.sg/images/default-source/about-us/nea-logo.png")
