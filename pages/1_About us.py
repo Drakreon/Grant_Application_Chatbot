@@ -42,9 +42,8 @@ with st.expander("📋 Project Scope"):
             (a) **Query filter** - Differentiate malicious query from query related to grant applicaiton   
             (b) **Query Rephraser** - Assess of the query is clear and provide edits ONLY when needed   
             (c) **Query Retriever** - Retrieve the data from the vector database   
-            (d) **Response Generator** - Generate civil servant format of response based on reference provided
-                          
-        Prevent malicious content generation, ensure information accuracy and generate responses are replied in civil servant tone
+            (d) **Response Generator** - Generate civil servant format of response based on reference provided           
+        - Prevent malicious content generation, ensure information accuracy and generate responses are replied in civil servant tone
              
         🛠️ **Step 4: Quality Assurance and Testing**:
                           
@@ -75,31 +74,30 @@ with st.expander("📊 Data Sources"):
 
 with st.expander("🔍 Evaluation of LLM"):
     st.write('''
-    **Evaluation of Retrival Combination**
+    :red-background[**Evaluation 1: Evaluation of splitting and chunking methods**]
              
-    We have evaluated three splitting and chunking methods using RAGAS metrics based on five past queries and answers:
+    We evaluated three splitting and chunking methods using RAGAS metrics based on five past queries and answers:
     - Recursive + Naïve retrieval
     - Semantic + Naïve retrieval
     - Recursive + Parent and Child + Naïve retrieval
              
-    While the Semantic + Naïve retrieval method provided the highest overall scores, particularly in Answer Relevancy (0.941627) and Answer Correctness (0.469876), we observed that it produced the most hallucinations in the answers. This is a critical concern, as hallucinations can lead to misinformation and reduce the reliability of the system.
+    Although the Semantic + Naïve Retrieval combination achieved the highest scores in Answer Relevancy (0.9416) and Correctness (0.4699), it generated the most hallucinations, raising concerns about reliability. This is a critical concern, as hallucinations can lead to misinformation and reduce the reliability of the system.
+     
+    **We chose the Recursive + Naïve Retrieval method for the following reasons:**
+    - Reduced hallucinations: Compared to the Semantic method, the Recursive combination produces fewer hallucinations, ensuring better answer integrity.
+    - Balanced approach : While not the top scorer, it offers solid results with a Relevancy score of 0.7376. It also provides decent results across all metrics
     
-    As such, we have opted for the Recursive + Naïve retrieval method. This approach offers the second-highest Answer Relevancy score (0.7376204) while maintaining a balance between performance and accuracy.
-    
-    [Selection] Recursive + Naïve retrieval combination
-    - Reduced hallucinations: Compared to the Semantic method, the Recursive approach appears to generate fewer hallucinations, which is crucial for maintaining answer integrity.
-    - Balanced approach : While not scoring the highest, it still provides good results across all metrics
-    
-    By choosing the Recursive + Naïve retrieval method, we prioritise the reduction of hallucinations whilst maintaining strong performance in relevancy and overall accuracy. This approach aligns with our goal of providing reliable and pertinent information to users.                          
-             ''')
+    This chosen combination aligns with our goal of providng accurate and reliable information by balancing performance in relevancy with minimal hallucination risk.                   
+    ''')
     st.image(
     "https://raw.githubusercontent.com/Drakreon/Grant_Application_Chatbot/main/Image/RAGAS%20evaluation.png",
     width=650)
 
 
     st.write('''
-        **Human Evaluation of Output from Chatbot**
-            XXXXX
+    :red-background[**Evaluation 2: Human Evaluation of Output from Chatbot**]
+    
+    XXXXX
     ''')
 
 st.markdown(

@@ -181,10 +181,11 @@ query_rephrase_task = Task(
     description="""\
     Step 1: The query is "{query}". If output from query_filter_agent is [YES], your output is [I don't know], If output from query_filter_agent is [NO] check if query is properly phrased as a grant application query.
     Step 2: Only if query is very unclear try to improve the query by rephrasing or improve the english, without adding new information. Otherwise retain original query
+
     """,
 
     expected_output="""\
-    [Original query] or [rephrase/improved query] or [I don't know]""",
+    [Original query] or [[Revised query] or [I don't know]""",
 
     agent=query_rephraser_agent,
 )

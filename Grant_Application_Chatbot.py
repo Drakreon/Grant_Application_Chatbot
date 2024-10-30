@@ -23,10 +23,6 @@ if not check_password():
 form = st.form(key="form")
 form.subheader("""I am a chatbot designed to help you with your queries on applying for NEA RIE 2025 Grants.""")
 
-st.markdown(
-    """
-    Use cases for chatbot include: application support and guidance, grant eligibility and requirements check, request for proposal clarification""")
-
 user_prompt = form.text_area("Enter your prompt here:", height=200)
 
 if form.form_submit_button("Submit"):
@@ -41,6 +37,11 @@ if form.form_submit_button("Submit"):
    
     else:
         st.warning("Please enter a prompt before submitting.")
+
+st.markdown(
+    """
+    Use cases for chatbot include: Grant call /application support and guidance, grant eligibility and requirements check""")
+
 
 with st.expander("**IMPORTANT NOTICE** ❗❗❗:"):
     st.write('''This web application is developed as a proof-of-concept prototype. The information provided here is **NOT intended for actual usage** and should not be relied upon for making any decisions, especially those related to financial, legal, or healthcare matters.
